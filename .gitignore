@@ -2,7 +2,7 @@
 .venv/
 venv/
 
-# Python cache
+# Python-generated files
 __pycache__/
 *.py[cod]
 .pytest_cache/
@@ -12,11 +12,9 @@ test-results/
 playwright-report/
 blob-report/
 
-# Environment variables
-.env
-
-# Editors and operating system
+# IDE settings
 .vscode/
 .idea/
-.DS_Store
-Thumbs.db
+
+# Environment variables and secrets
+.env
