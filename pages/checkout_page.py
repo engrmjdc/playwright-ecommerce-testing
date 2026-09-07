@@ -15,6 +15,7 @@ class CheckoutPage:
         self.continue_button = page.locator('[data-test="continue"]')
         self.finish_button = page.locator('[data-test="finish"]')
         self.complete_message = page.locator('[data-test="complete-header"]')
+        self.error_message = page.locator('[data-test="error"]')
 
     def enter_customer_information(
         self,
