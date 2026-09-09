@@ -1,19 +1,12 @@
-from playwright.sync_api import Page, expect
+from playwright.sync_api import Page
 
 from pages.inventory_page import InventoryPage
-from pages.login_page import LoginPage
 
 
 def test_products_can_be_sorted_by_price_low_to_high(
-    page: Page,
+    authenticated_page: Page,
 ):
-    login_page = LoginPage(page)
-    inventory_page = InventoryPage(page)
-
-    login_page.open()
-    login_page.login("standard_user", "secret_sauce")
-
-    expect(page).to_have_url(InventoryPage.URL)
+    inventory_page = InventoryPage(authenticated_page)
 
     inventory_page.sort_by_price_low_to_high()
 

@@ -4,17 +4,15 @@ from playwright.sync_api import Page, expect
 from pages.cart_page import CartPage
 from pages.checkout_page import CheckoutPage
 from pages.inventory_page import InventoryPage
-from pages.login_page import LoginPage
 
 
-def test_user_can_complete_checkout(page: Page):
-    login_page = LoginPage(page)
+def test_user_can_complete_checkout(
+    authenticated_page: Page,
+):
+    page = authenticated_page
     inventory_page = InventoryPage(page)
     cart_page = CartPage(page)
     checkout_page = CheckoutPage(page)
-
-    login_page.open()
-    login_page.login("standard_user", "secret_sauce")
 
     inventory_page.add_backpack_to_cart()
     inventory_page.open_cart()
@@ -61,19 +59,16 @@ def test_user_can_complete_checkout(page: Page):
     ],
 )
 def test_checkout_rejects_missing_customer_information(
-    page: Page,
+    authenticated_page: Page,
     first_name: str,
     last_name: str,
     postal_code: str,
     expected_error: str,
 ):
-    login_page = LoginPage(page)
+    page = authenticated_page
     inventory_page = InventoryPage(page)
     cart_page = CartPage(page)
     checkout_page = CheckoutPage(page)
-
-    login_page.open()
-    login_page.login("standard_user", "secret_sauce")
 
     inventory_page.add_backpack_to_cart()
     inventory_page.open_cart()
