@@ -18,3 +18,7 @@ blob-report/
 
 # Environment variables and secrets
 .env
+
+# Test reports and failure evidence
+reports/
+test-results/
